@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veb-Taklifnomalar Platformasi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome ikonkalari -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Fon 3D elementlari uchun qatlam -->
+    <div class="bg-animation">
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+    </div>
+
+    <!-- Asosiy Konteyner -->
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-gem"></i> Taklifnoma<span class="highlight">3D</span></h1>
+            <p>O'ziga xos dizayndagi zamonaviy veb-taklifnomangizni yarating</p>
+        </header>
+
+        <!-- Shablonlar bo'limi -->
+        <section class="templates-section">
+            <h2>Mavjud 3D Shablonlar</h2>
+            <div class="templates-grid">
+                <!-- Shablon 1 -->
+                <div class="card-3d" onclick="selectTemplate('To\'y')">
+                    <div class="card-content">
+                        <i class="fa-solid fa-ring icon-3d"></i>
+                        <h3>To'y taklifnomasi</h3>
+                        <p>3D animatsiyali gullar va uzuklar effekti</p>
+                        <button class="btn-select">Tanlash</button>
+                    </div>
+                </div>
+                <!-- Shablon 2 -->
+                <div class="card-3d" onclick="selectTemplate('Tug\'ilgan kun')">
+                    <div class="card-content">
+                        <i class="fa-solid fa-cake-candles icon-3d"></i>
+                        <h3>Tug'ilgan kun</h3>
+                        <p>Bayramona 3D sharlar va yorqin uslub</p>
+                        <button class="btn-select">Tanlash</button>
+                    </div>
+                </div>
+                <!-- Shablon 3 -->
+                <div class="card-3d" onclick="selectTemplate('Yubiley / Maxsus')">
+                    <div class="card-content">
+                        <i class="fa-solid fa-champagne-glasses icon-3d"></i>
+                        <h3>Maxsus tadbir</h3>
+                        <p>Klassik va zamonaviy 3D dizayn</p>
+                        <button class="btn-select">Tanlash</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ma'lumot kiritish formasi -->
+        <section class="form-section glass-panel">
+            <h2>Ma'lumotlarni Kiriting</h2>
+            <form id="invitationForm" onsubmit="generateLink(event)">
+                <div class="input-group">
+                    <label><i class="fa-solid fa-bookmark"></i> Tanlangan shablon:</label>
+                    <input type="text" id="selectedTemplate" value="To'y" readonly>
+                </div>
+                <div class="input-group">
+                    <label><i class="fa-solid fa-users"></i> Ismlar (Kelin-Kuyov / Egasi):</label>
+                    <input type="text" id="names" placeholder="masalan: Umar & Zuhra" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fa-solid fa-calendar-days"></i> Sana va Vaqt:</label>
+                    <input type="datetime-local" id="eventDate" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fa-solid fa-location-dot"></i> Manzil va Lokatsiya havolasi:</label>
+                    <input type="text" id="location" placeholder="To'yxona nomi va Google Maps link" required>
+                </div>
+                <button type="submit" class="btn-submit">Havola yaratish <i class="fa-solid fa-wand-magic-sparkles"></i></button>
+            </form>
+        </section>
+
+        <!-- Natija va RSVP qismi (dastlab yashirin) -->
+        <section id="resultSection" class="result-section glass-panel hidden">
+            <h2>Sizning shaxsiy havolangiz tayyor!</h2>
+            <p>Quyidagi havolani mehmonlarga yuboring:</p>
+            <div class="link-box">
+                <input type="text" id="generatedLink" readonly>
+                <button onclick="copyLink()"><i class="fa-solid fa-copy"></i> Nusxalash</button>
+            </div>
+            <div class="rsvp-preview">
+                <h3>RSVP (Kelishini tasdiqlash) statistikasi:</h3>
+                <p>Keluvchilar: <span id="yesCount">0</span> | Kelolmaydiganlar: <span id="noCount">0</span></p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
